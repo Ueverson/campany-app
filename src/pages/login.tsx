@@ -4,6 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AntDesign } from '@expo/vector-icons';
+import { withExpoSnack, styled } from 'nativewind';
 
 interface LoginData {
   col_email: string;
@@ -62,54 +63,31 @@ function Login({ navigation }: any): JSX.Element {
     }
   };
 
+  const StyledView = styled(View)
+  const StyledText = styled(Text)
+
   return (
-    <View style={{ flex: 1, backgroundColor: 'gray', alignItems: 'center', justifyContent: 'center' }}>
+    <StyledView className='grid text-center justify-center py-4'>
       <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="login" />
-      <Text className="text-3xl mb-4">Login</Text>
-      <Text className="pb-4 text-black-500">Preencha as informações para logar no sistema.</Text>
+      <StyledText className="text-3xl mb-4">Login</StyledText>
+      <StyledText className="pb-4 text-black-500">Preencha as informações para logar no sistema.</StyledText>
       <TextInput
-        style={{
-          borderWidth: 1,
-          borderColor: 'black',
-          backgroundColor: 'white',
-          fontSize: 16,
-          padding: 10,
-          marginBottom: 10,
-          width: 300,
-          height: 40,
-        }}
         placeholder="E-mail"
         onChangeText={(text) => handleInputChange('col_email', text)}
         value={loginData.col_email}
       />
       <TextInput
-        style={{
-          borderWidth: 1,
-          borderColor: 'black',
-          backgroundColor: 'white',
-          fontSize: 16,
-          padding: 10,
-          marginBottom: 10,
-          width: 300,
-          height: 40,
-        }}
         placeholder="Senha"
         secureTextEntry
         onChangeText={(text) => handleInputChange('col_senha', text)}
         value={loginData.col_senha}
       />
       <TouchableOpacity
-        style={{
-          marginTop: 10,
-          backgroundColor: 'white',
-          borderRadius: 20,
-          padding: 10,
-        }}
         onPress={handleSubmit}>
         <Text style={{ color: 'black', fontSize: 20, textAlign: 'center' }}>Login</Text>
       </TouchableOpacity>
-    </View>
+    </StyledView>
   );
 }
 
-export default Login;
+export default withExpoSnack(Login);

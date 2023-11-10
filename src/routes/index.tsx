@@ -10,7 +10,6 @@ import CadastrarColaborador from '../pages/cadastrarColaborador';
 import SolicitacaoCompra from '../pages/solicitacaoCompra';
 import Home from '../pages/home';
 import QRCodeImagem from '../pages/QRCodeImagem';
-
 const Stack = createNativeStackNavigator();
 
 export default function Routes() {

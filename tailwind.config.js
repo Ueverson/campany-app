@@ -1,6 +1,11 @@
+
 /** @type {import('tailwindcss').Config} */
+const nativewind = require("nativewind/tailwind/native")
 module.exports = {
-  content: [ "./src/**/*.{js,ts,jsx,tsx}"],
+  content: ["./App.{js,jsx,ts,tsx}",
+  "./screens/**/*.{js,ts,jsx,tsx}",
+  "./pages/**/*.{js,ts,jsx,tsx}",
+  "./components/**/*.{js,ts,jsx,tsx}"],
   theme: {
     colors: {
       transparent: 'transparent',
@@ -30,6 +35,7 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [nativewind()],
+  corePlugins: require('tailwind-rn/unsupported-core-plugins'),
 }
 
