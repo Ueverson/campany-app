@@ -96,10 +96,11 @@ function Pedidos() {
             <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'white' , }}>
               Ativos
             </Text>
-            {pedidos.map((ped, index) => (
+            {pedidos.map((pedido, index) => (
               <CardPedidos
-                idMesa={ped[0].mes_id}
-                pedidos={ped}
+                key={pedido[0].ped_id}
+                idMesa={pedido[0].mes_id}
+                pedidos={pedido}
                 moveCard={handleCardPronto}
                 index={index}
                 isFinalizado={false}
@@ -115,6 +116,7 @@ function Pedidos() {
             </Text>
             {pedidosProntos.map((pedido: Pedido[], index: number) => (
               <CardPedidos
+                key={pedido[0].ped_id}
                 idMesa={pedido[0].mes_id}
                 pedidos={pedido}
                 index={index}

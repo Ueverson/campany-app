@@ -45,7 +45,7 @@ function CardCompras({
 
   const handleEntregue = () => {
     pedidos.map((pedido) => {
-      updateStatus("PG", pedido.ped_id);
+      updateStatus("PG", pedido.cli_id);
     });
   };
 

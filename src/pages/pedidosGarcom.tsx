@@ -69,6 +69,7 @@ function PedidosGarcom() {
       <ScrollView>
         {pedidosProntos.map((pedido, index) => (
           <CardPedidosGarcom
+          key={pedido[0].ped_id}
             idMesa={pedido[0].mes_id}
             pedidos={pedido}
             index={index}

@@ -45,9 +45,8 @@ export default function SolicitacaoCompra() {
     };
 }, []);
 
-  const updateStatus = async (status: string, ped_id: number) => {
-    // Implemente sua lógica para atualizar o status em React Native
-    await AtualizarStatusPagamentoPedidos(status, ped_id);
+  const updateStatus = async (status: string, cli_id: number) => {
+    await AtualizarStatusPagamentoPedidos(status, cli_id);
   };
 
   if (!pedidosProntos || pedidosProntos.length === 0) {
@@ -73,6 +72,7 @@ export default function SolicitacaoCompra() {
       </View>
       {pedidosProntos.map((pedido, index) => (
         <CardCompras
+          key={pedido[0].ped_id}
           idMesa={pedido[0].mes_id}
           pedidos={pedido}
           index={index}
