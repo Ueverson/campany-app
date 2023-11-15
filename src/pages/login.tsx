@@ -73,6 +73,7 @@ function Login({ navigation }: any): JSX.Element {
   return (
     <View style={styles.container}>
       <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} style={styles.headerIcon} />} to="login" />
+      <Text style={styles.welcomeText}>Bem vindo!</Text>
       <Text style={styles.pageTitle}>Login</Text>
       <Text style={styles.pageSubtitle}>Preencha as informações para logar no sistema.</Text>
       <TextInput
