@@ -45,6 +45,13 @@ const styles = StyleSheet.create({
   importantText: {
     color: '#c2410c', // Orange-500
   },
+  welcomeText: {
+    color: '#F4F4F4', // White-300
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginLeft: 10,
+    textAlign:'center'
+  },
 });
 
 export default styles;
