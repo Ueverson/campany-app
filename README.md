@@ -40,9 +40,7 @@ npx expo install react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config@
 Then, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npx expo start
 ```
 
 Open [http://localhost:19006/](http://localhost:19006/) with your browser to see the result.
