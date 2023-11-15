@@ -38,7 +38,7 @@ function CadastrarCargos() {
 
   return (
     <View style={cadastrarCargosStyles.container}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
       <View style={cadastrarCargosStyles.contentContainer}>
         <Text style={cadastrarCargosStyles.pageTitle}>Cadastrar cargos</Text>
         <Text style={cadastrarCargosStyles.pageSubtitle}>

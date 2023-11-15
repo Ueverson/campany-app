@@ -8,7 +8,7 @@ import homeStyles from './css/homeStyles';
 function Home() {
   return (
     <ScrollView style={homeStyles.container}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="login" />
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="login" />
       <View style={homeStyles.contentContainer}>
         <View style={homeStyles.searchBar}>
           <TextInput

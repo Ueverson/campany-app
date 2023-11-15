@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import Notification from '../components/Notification';
@@ -74,7 +73,7 @@ function CadastrarColaborador() {
   return (
     <View style={cadastrarColaboradorStyles.container}>
       <ScrollView contentContainerStyle={cadastrarColaboradorStyles.contentContainer}>
-        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
         <Text style={cadastrarColaboradorStyles.pageTitle}>Cadastrar colaborador</Text>
         <Text style={cadastrarColaboradorStyles.pageSubtitle}>
           Para realizar o cadastro de um colaborador, preencha as informações abaixo.

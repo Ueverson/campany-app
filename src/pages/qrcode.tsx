@@ -70,7 +70,7 @@ export default function Qrcode() {
 
   return (
     <View style={qrcodeStyles.container}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
       <ScrollView contentContainerStyle={qrcodeStyles.contentContainer}>
         <View>
           <Text style={[qrcodeStyles.textWhite, { paddingTop: 5, textAlign: 'center' }]}>
@@ -83,6 +83,8 @@ export default function Qrcode() {
           style={qrcodeStyles.picker}
           selectedValue={cliente.mes_id}
           onValueChange={(itemValue: any) => handleChange(itemValue)}
+          dropdownIconColor='white'
+          dropdownIconRippleColor='white'
         >
           <Picker.Item label="Selecione" value={0} />
           {mesas.map((mesa) => (

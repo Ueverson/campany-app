@@ -14,7 +14,7 @@ function QRCodeImagem() {
 
   return (
     <View style={{ backgroundColor: 'gray', flex: 1 }}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
       <TouchableOpacity onPress={() => navigation.navigate('qrcode')}></TouchableOpacity>
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text style={{ fontSize: 20, textAlign: 'center' }}>

@@ -56,7 +56,7 @@ function Cargos() {
 
   return (
     <View style={cargosStyles.container}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
       <View style={cargosStyles.contentContainer}>
         <Text style={cargosStyles.pageTitle}>Cargos</Text>
         <Text style={cargosStyles.pageSubtitle}>

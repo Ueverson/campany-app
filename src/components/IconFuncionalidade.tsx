@@ -13,14 +13,14 @@ function IconFuncionalidade({ redirect, icon, alternativeText }: IconProps) {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={iconFuncionalidadeStyles.container}>
-      <TouchableOpacity onPress={() => navigation.navigate(redirect)}>
+    <TouchableOpacity onPress={() => navigation.navigate(redirect)}>
+      <View style={iconFuncionalidadeStyles.container}>
         <View style={iconFuncionalidadeStyles.iconContainer}>
           {icon}
         </View>
-      </TouchableOpacity>
-      <Text style={iconFuncionalidadeStyles.textContainer}>{alternativeText}</Text>
-    </View>
+        <Text style={iconFuncionalidadeStyles.textContainer}>{alternativeText}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 

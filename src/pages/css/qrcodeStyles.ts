@@ -33,7 +33,7 @@ const qrcodeStyles = StyleSheet.create({
         marginTop: 20,
         marginBottom: 20,
         width: '100%',
-        color: 'black',
+        color: 'white',
         fontSize: 20,
     },
     generateButton: {

@@ -4,7 +4,7 @@ const headerStyles = StyleSheet.create({
   container: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 70,
   },
   iconContainer: {
     marginRight: 10,
@@ -16,7 +16,7 @@ const headerStyles = StyleSheet.create({
   },
   titleText: {
     color: '#c2410c', // Orange-500
-    fontSize: 24,
+    fontSize: 32,
     fontWeight: 'bold',
   },
 });
