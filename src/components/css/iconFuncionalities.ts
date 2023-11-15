@@ -1,4 +1,3 @@
-
 import { StyleSheet } from 'react-native';
 
 const iconFuncionalidadeStyles = StyleSheet.create({
