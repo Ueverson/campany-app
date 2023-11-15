@@ -8,6 +8,7 @@ import { criarCliente } from '../service/ClienteService';
 import { QRCodeContext } from '../service/ContextService';
 import { Picker } from '@react-native-picker/picker';
 import { AntDesign, FontAwesome5 } from '@expo/vector-icons';
+import qrcodeStyles from './css/qrcodeStyles';
 
 interface mesa {
   mes_id: number;
@@ -68,18 +69,18 @@ export default function Qrcode() {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'gray' }}>
+    <View style={qrcodeStyles.container}>
       <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
-      <ScrollView contentContainerStyle={{ padding: 20 }}>
+      <ScrollView contentContainerStyle={qrcodeStyles.contentContainer}>
         <View>
-          <Text style={{ color: 'black', paddingTop: 5, textAlign: 'center' }}>
-            <Text style={{ paddingTop: 5, fontSize: 18, left: 20, width: '100%' }}>
+          <Text style={[qrcodeStyles.textWhite, { paddingTop: 5, textAlign: 'center' }]}>
+            <Text style={qrcodeStyles.pageSubtitle}>
               Selecione uma das mesas disponíveis abaixo para gerar um QR-Code
             </Text>
           </Text>
         </View>
         <Picker
-          style={{ width: '100%', color: 'black', fontSize: 20 }}
+          style={qrcodeStyles.picker}
           selectedValue={cliente.mes_id}
           onValueChange={(itemValue: any) => handleChange(itemValue)}
         >
@@ -92,13 +93,7 @@ export default function Qrcode() {
             />
           ))}
         </Picker>
-        <TouchableOpacity onPress={sendMessageTrue}
-          style={{
-            marginTop: 10,
-            backgroundColor: 'white',
-            borderRadius: 20,
-            padding: 10,
-          }}>
+        <TouchableOpacity onPress={sendMessageTrue} style={qrcodeStyles.generateButton}>
           <Text style={{ color: 'black', fontSize: 20, textAlign: 'center' }}>
             Gerar
           </Text>
