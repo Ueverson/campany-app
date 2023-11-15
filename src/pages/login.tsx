@@ -4,7 +4,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AntDesign } from '@expo/vector-icons';
-import { withExpoSnack } from 'nativewind';
 import styles from './css/loginStyles';
 import Notification from '../components/Notification'
 
@@ -60,11 +59,12 @@ function Login({ navigation }: any): JSX.Element {
       const { webToken } = response.data;
       await setTokenWithExpiration(webToken);
       navigation.navigate('home');
+
     } catch (error) {
       console.error('Usuário ou senha inválidos');
       setIsErrorVisible(true);
     }
-  };
+  }
 
   const handleNotificationClose = () => {
     setIsErrorVisible(false);
@@ -102,4 +102,4 @@ function Login({ navigation }: any): JSX.Element {
   );
 }
 
-export default withExpoSnack(Login);
+export default Login;
