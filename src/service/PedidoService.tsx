@@ -54,24 +54,24 @@ export async function buscarPedidosParaPagamento(status: string): Promise<Pedido
   return response;
 }
 
-export async function AtualizarStatusPagamentoPedidos(ped_status : string, ped_id : number): Promise<Pedido[]>{
+export async function AtualizarStatusPagamentoPedidos(ped_status: string, cli_id: number): Promise<Pedido[]> {
 
   const url = 'https://cardapio-digital-api.onrender.com/actions/atualizarStatusPagementoPedido';
- 
-  const response = await fetch(url,{
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          ped_status : ped_status,
-          ped_id: ped_id
-      })
+
+  const response = await fetch(url, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      ped_status: ped_status,
+      cli_id: cli_id
+    })
   })
-  .then((response)=>{
+    .then((response) => {
       return response.json();
-  })
-  .catch((err) => err.message)
+    })
+    .catch((err) => err.message)
 
   return response;
 }

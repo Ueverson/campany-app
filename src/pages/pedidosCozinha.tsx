@@ -76,10 +76,10 @@ function Pedidos() {
     (!pedidos || pedidos.length === 0)
   ) {
     return (
-      <View style={{ backgroundColor: 'gray'} } className='h-full min-h-screen'>
+      <View style={{ backgroundColor: 'gray' }} className='h-full min-h-screen'>
         <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
         <View style={{ alignItems: 'center' }}>
-          <Text style={{ color: 'black', fontSize: 20, textAlign: 'center'}}>
+          <Text style={{ color: 'black', fontSize: 20, textAlign: 'center' }}>
             Nenhum pedido finalizado encontrado.
           </Text>
         </View>
@@ -88,18 +88,19 @@ function Pedidos() {
   }
 
   return (
-    <View style={{backgroundColor: 'gray'} } className='h-full min-h-screen'>
+    <View style={{ backgroundColor: 'gray' }} className='h-full min-h-screen'>
       <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
       <ScrollView style={{ padding: 10 }}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'white' , }}>
+            <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'white', }}>
               Ativos
             </Text>
-            {pedidos.map((ped, index) => (
+            {pedidos.map((pedido, index) => (
               <CardPedidos
-                idMesa={ped[0].mes_id}
-                pedidos={ped}
+                key={pedido[0].ped_id}
+                idMesa={pedido[0].mes_id}
+                pedidos={pedido}
                 moveCard={handleCardPronto}
                 index={index}
                 isFinalizado={false}
@@ -115,7 +116,7 @@ function Pedidos() {
             </Text>
             {pedidosProntos.map((pedido: Pedido[], index: number) => (
               <CardPedidos
-                idMesa={pedido[0].mes_id}
+                idMesa={pedido[0].ped_id}
                 pedidos={pedido}
                 index={index}
                 buttonLabel="Entregar"

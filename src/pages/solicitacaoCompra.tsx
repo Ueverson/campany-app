@@ -73,7 +73,7 @@ export default function SolicitacaoCompra() {
       </View>
       {pedidosProntos.map((pedido, index) => (
         <CardCompras
-          idMesa={pedido[0].mes_id}
+          idMesa={pedido[0].ped_id}
           pedidos={pedido}
           index={index}
           isFinalizado={false}

@@ -69,7 +69,7 @@ function PedidosGarcom() {
       <ScrollView>
         {pedidosProntos.map((pedido, index) => (
           <CardPedidosGarcom
-            idMesa={pedido[0].mes_id}
+            idMesa={pedido[0].ped_id}
             pedidos={pedido}
             index={index}
             isFinalizado={false}
