@@ -1,3 +1,5 @@
+// Cargos.js
+
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import Notification from '../components/Notification';
@@ -5,6 +7,7 @@ import { listarCargo } from '../service/CargoService';
 import { useNavigation } from '@react-navigation/native';
 import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AntDesign, Entypo, Feather, FontAwesome } from '@expo/vector-icons';
+import cargosStyles from './css/cargosStyles';
 
 interface Cargo {
   fun_id: number;
@@ -48,68 +51,53 @@ function Cargos() {
 
   function directTo(tipo: string) {
     tipo === 'ADICIONAR' ? setNotificationAdd(false) : setNotificationModify(false);
-    navigation.navigate('cadastrar-colaborador')
+    navigation.navigate('cadastrar-colaborador');
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'gray' }}>
+    <View style={cargosStyles.container}>
       <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
-      <View style={{ padding: 20 }}>
-        <Text style={{ fontSize: 30, marginBottom: 10 }}>Cargos</Text>
-        <Text style={{ fontSize: 20, marginBottom: 10, textAlign: 'center' }}>
+      <View style={cargosStyles.contentContainer}>
+        <Text style={cargosStyles.pageTitle}>Cargos</Text>
+        <Text style={cargosStyles.pageSubtitle}>
           Lista de todos os cargos cadastrados no sistema.
         </Text>
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderColor: 'grey',
-            marginTop: 10,
-            paddingBottom: 10,
-          }}
-        />
-        <View style={{ paddingTop: 10 }}>
+        <View style={cargosStyles.borderBottom} />
+        <View>
           {cargos.length !== 0 ? (
             cargos.map((cargo) =>
               cargo.fun_status.trim() === 'S' ? (
-                <View key={cargo.fun_id} style={{ flexDirection: 'row', alignItems: 'center', paddingBottom: 10 }}>
-                  <TouchableOpacity
-                    onPress={notificationPopUpModify}
-                    style={{ position: 'absolute', right: 0 }}
-                  >
-                    <Feather name="edit" size={24} color="black" />
+                <View
+                  key={cargo.fun_id}
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between', // Add this line
+                    marginBottom: 10, // Add this line for spacing
+                  }}
+                >
+                  <Text style={cargosStyles.cargoText}>{cargo.fun_nome}</Text>
+                  <TouchableOpacity onPress={notificationPopUpModify}>
+                    <Feather name="edit" size={24} color="white" />
                   </TouchableOpacity>
-                  <Text style={{ fontWeight: 'bold' }}>{cargo.fun_nome}</Text>
                 </View>
               ) : null
             )
           ) : (
             <View style={{ paddingBottom: 10 }}>
-              <Text style={{ fontWeight: 'bold' }}>Sem cargos</Text>
+              <Text style={cargosStyles.cargoText}>Sem cargos</Text>
             </View>
           )}
         </View>
-        <View
-          style={{
-            borderBottomWidth: 1,
-            borderColor: 'grey',
-            marginTop: 20,
-          }}
-        />
-        <TouchableOpacity
-          onPress={notificationPopUpAdd}
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginTop: 20,
-          }}
-        >
-          <Entypo name="plus" size={24} color="black" />
-          <Text style={{ color: 'green' }}>Adicionar cargo</Text>
+        <View style={cargosStyles.borderBottom} />
+        <TouchableOpacity onPress={notificationPopUpAdd} style={cargosStyles.addCargoContainer}>
+          <Entypo name="plus" size={24} color="white" />
+          <Text style={cargosStyles.addCargoText}>Adicionar cargo</Text>
         </TouchableOpacity>
         {showNotificationAdd && (
           <Notification
             directTo={() => {
-              directTo('ADICIONAR')
+              directTo('ADICIONAR');
             }}
             buttonText="Adicionar"
             closePopUp={hideNotificationAdd}
@@ -117,12 +105,13 @@ function Cargos() {
             icon={<FontAwesome name="question" size={54} color="black" />}
             description="O cargo adicionado será exibido na página de cargos."
             buttonAction={handleClick}
-            isModalVisible={showNotificationAdd} />
+            isModalVisible={showNotificationAdd}
+          />
         )}
         {showNotificationModify && (
           <Notification
             directTo={() => {
-              directTo('MODIFICA')
+              directTo('MODIFICA');
             }}
             buttonText="Editar"
             closePopUp={hideNotificationModify}
@@ -130,7 +119,8 @@ function Cargos() {
             icon={<FontAwesome name="question" size={54} color="black" />}
             description="As alterações desse cargo afetarão todos funcionários que recebem ele."
             buttonAction={hideNotificationModify}
-            isModalVisible={showNotificationModify} />
+            isModalVisible={showNotificationModify}
+          />
         )}
       </View>
     </View>
