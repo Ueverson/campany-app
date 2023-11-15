@@ -4,6 +4,7 @@ import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AntDesign } from '@expo/vector-icons';
 import { AtualizarStatusPedidos, buscarPedidos } from '../service/PedidoService';
 import CardPedidos from '../components/cardPedidos';
+import pedidosCozinhaStyles from './css/pedidosCozinhaStyles';
 
 interface Pedido {
   ped_id: number;
@@ -76,10 +77,10 @@ function Pedidos() {
     (!pedidos || pedidos.length === 0)
   ) {
     return (
-      <View style={{ backgroundColor: 'gray'} } className='h-full min-h-screen'>
-        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+      <View style={pedidosCozinhaStyles.container}>
+        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
         <View style={{ alignItems: 'center' }}>
-          <Text style={{ color: 'black', fontSize: 20, textAlign: 'center'}}>
+          <Text style={pedidosCozinhaStyles.sectionSubtitle}>
             Nenhum pedido finalizado encontrado.
           </Text>
         </View>
@@ -88,14 +89,12 @@ function Pedidos() {
   }
 
   return (
-    <View style={{backgroundColor: 'gray'} } className='h-full min-h-screen'>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
-      <ScrollView style={{ padding: 10 }}>
+    <View style={pedidosCozinhaStyles.container}>
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
+      <ScrollView style={pedidosCozinhaStyles.contentContainer}>
         <View style={{ flex: 1, flexDirection: 'row' }}>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'white' , }}>
-              Ativos
-            </Text>
+            <Text style={pedidosCozinhaStyles.pageTitle}>Ativos</Text>
             {pedidos.map((pedido, index) => (
               <CardPedidos
                 key={pedido[0].ped_id}
@@ -111,9 +110,7 @@ function Pedidos() {
             ))}
           </View>
           <View style={{ flex: 1 }}>
-            <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'white' }}>
-              Finalizados
-            </Text>
+            <Text style={pedidosCozinhaStyles.sectionTitle}>Finalizados</Text>
             {pedidosProntos.map((pedido: Pedido[], index: number) => (
               <CardPedidos
                 key={pedido[0].ped_id}
