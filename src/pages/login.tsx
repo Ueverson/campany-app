@@ -90,7 +90,7 @@ function Login({ navigation }: any): JSX.Element {
         value={loginData.col_senha}
       />
       <TouchableOpacity style={styles.loginButton} onPress={handleSubmit}>
-        <Text style={styles.loginButtonText}>Login</Text>
+        <Text style={styles.loginButtonText}>Entrar</Text>
       </TouchableOpacity>
       <Notification
         title="Erro de autenticação"
