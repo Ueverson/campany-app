@@ -108,6 +108,8 @@ function CadastrarColaborador() {
         <Picker
           style={cadastrarColaboradorStyles.picker}
           selectedValue={colaborador.fun_id}
+          dropdownIconColor='white'
+          dropdownIconRippleColor='white'
           onValueChange={(itemValue: any, itemIndex: any) => setColaborador({ ...colaborador, fun_id: itemValue })}
         >
           <Picker.Item label="Selecione" value={0} style={{ color: 'black' }} />

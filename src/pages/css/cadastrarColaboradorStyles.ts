@@ -31,7 +31,7 @@ const cadastrarColaboradorStyles = StyleSheet.create({
         marginBottom: 10,
     },
     picker: {
-        color: 'black',
+        color: 'white',
         height: 30,
         marginBottom: 10,
         marginTop: 10,
