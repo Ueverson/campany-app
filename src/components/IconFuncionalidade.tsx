@@ -1,6 +1,7 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import iconFuncionalidadeStyles from './css/iconFuncionalities';
 
 interface IconProps {
   redirect: string;
@@ -12,15 +13,15 @@ function IconFuncionalidade({ redirect, icon, alternativeText }: IconProps) {
   const navigation = useNavigation<any>();
 
   return (
-    <View style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' , marginTop: 10}}>
-      <TouchableOpacity onPress={() => navigation.navigate(redirect)}>
-        <View className="text-black-500">
+    <TouchableOpacity onPress={() => navigation.navigate(redirect)}>
+      <View style={iconFuncionalidadeStyles.container}>
+        <View style={iconFuncionalidadeStyles.iconContainer}>
           {icon}
         </View>
-      </TouchableOpacity>
-      <Text className="mt-2 text-black-250 text-center w-16">{alternativeText}</Text>
-    </View>
+        <Text style={iconFuncionalidadeStyles.textContainer}>{alternativeText}</Text>
+      </View>
+    </TouchableOpacity>
   );
 }
 
-export default IconFuncionalidade;
+export default IconFuncionalidade

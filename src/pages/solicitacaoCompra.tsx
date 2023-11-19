@@ -1,7 +1,8 @@
-import { AntDesign, MaterialIcons } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons';
 import { View, Text } from 'react-native';
-import CardCompras from '../components/cardCompras';
 import { useEffect, useState } from 'react';
+import CardCompras from '../components/cardCompras';
+import solicitacaoCompraStyles from './css/solicitacaoCompraStyles';
 import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AtualizarStatusPagamentoPedidos, buscarPedidosParaPagamento } from '../service/PedidoService';
 
@@ -20,30 +21,27 @@ export default function SolicitacaoCompra() {
 
   useEffect(() => {
     async function fetchPedidosProntos() {
-        await buscarPedidosParaPagamento("F").then((data: Pedido[]) => {
-            const grouped: { [key: number]: Pedido[] } = data.reduce(
-                (result, item) => {
-                    const mesid = item.mes_id;
-                    if (!result[mesid]) {
-                        result[mesid] = [];
-                    }
-                    result[mesid].push(item);
+      await buscarPedidosParaPagamento('F').then((data: Pedido[]) => {
+        const grouped: { [key: number]: Pedido[] } = data.reduce((result, item) => {
+          const mesid = item.mes_id;
+          if (!result[mesid]) {
+            result[mesid] = [];
+          }
+          result[mesid].push(item);
 
-                    return result;
-                },
-                {} as { [key: number]: Pedido[] }
-            );
-            setPedidosProntos(Object.values(grouped));
-        });
+          return result;
+        }, {} as { [key: number]: Pedido[] });
+        setPedidosProntos(Object.values(grouped));
+      });
     }
 
     fetchPedidosProntos();
 
     const interval = setInterval(fetchPedidosProntos, 1000);
     return () => {
-        clearInterval(interval);
+      clearInterval(interval);
     };
-}, []);
+  }, []);
 
   const updateStatus = async (status: string, cli_id: number) => {
     await AtualizarStatusPagamentoPedidos(status, cli_id);
@@ -51,10 +49,10 @@ export default function SolicitacaoCompra() {
 
   if (!pedidosProntos || pedidosProntos.length === 0) {
     return (
-      <View style={{ backgroundColor: 'gray' }} className='h-full min-h-screen'>
-        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+      <View style={solicitacaoCompraStyles.container}>
+        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
         <View style={{ alignItems: 'center' }}>
-          <Text style={{ color: 'black', fontSize: 20 , textAlign: 'center'}}>
+          <Text style={[solicitacaoCompraStyles.textWhite, solicitacaoCompraStyles.pageTitle]}>
             Nenhuma solicitação de pagamento encontrada.
           </Text>
         </View>
@@ -63,10 +61,10 @@ export default function SolicitacaoCompra() {
   }
 
   return (
-    <View style={{ backgroundColor: 'gray' }} className='h-full min-h-screen'>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
+    <View style={solicitacaoCompraStyles.container}>
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
       <View style={{ alignItems: 'center' }}>
-        <Text style={{ color: 'black', fontSize: 20 , textAlign: 'center'}}>
+        <Text style={[solicitacaoCompraStyles.title, solicitacaoCompraStyles.textWhite]}>
           Solicitações para pagamento
         </Text>
       </View>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ActivityIndicator, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-//import AsyncStorage from '@react-native-async-storage/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import validaToken from './ValidaTokenService';
 
 function AuthWrapper({ children } : any ) {
@@ -12,10 +12,10 @@ function AuthWrapper({ children } : any ) {
   useEffect(() => {
     async function checkTokenValidity() {
       try {
-        const token = ''//await AsyncStorage.getItem('token');
+        const token = await AsyncStorage.getItem('token');
 
         if (token) {
-          const isValid = await validaToken(token); // Use sua função de validação de token
+          const isValid = await validaToken(token);
           setTokenValid(isValid);
 
           if (!isValid) {

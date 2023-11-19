@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import cardPedidosStyles from './css/cardPedidosStyles';
 
 interface Pedido {
   ped_id: number;
@@ -8,7 +9,7 @@ interface Pedido {
   ped_status: string;
   ped_quantidade: number;
   pro_nome: string;
-  mes_id: number; // Adicionei o campo mes_id, que parece ser necessário
+  mes_id: number;
 }
 
 interface CardPedidosProps {
@@ -51,93 +52,43 @@ const CardPedidos: React.FC<CardPedidosProps> = ({
   };
 
   return (
-    <View
-      style={{
-        maxWidth: 300,
-        marginVertical: 10,
-        backgroundColor: '#FFA500',
-        borderRadius: 10,
-        overflow: 'hidden',
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        elevation: 4,
-      }}
-    >
-      <View style={{ padding: 10 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Mesa {idMesa}</Text>
+    <View style={cardPedidosStyles.container}>
+      <View style={cardPedidosStyles.cardContent}>
+        <View style={cardPedidosStyles.header}>
+          <Text style={cardPedidosStyles.mesaText}>Mesa {idMesa}</Text>
         </View>
-        <View style={{ marginVertical: 10 }}>
+        <View style={cardPedidosStyles.itemContainer}>
           {pedidos.map((pedido, checkboxIndex) => (
-            <View
-              key={checkboxIndex}
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginBottom: 5,
-              }}
-            >
-              <Text
-                style={{
-                  backgroundColor: 'white',
-                  borderRadius: 5,
-                  padding: 5,
-                }}
-              >
-                {pedido.ped_quantidade}
-              </Text>
-              <Text style={{ marginLeft: 10, fontWeight: 'bold', color: 'gray' }}>
-                {pedido.pro_nome}
-              </Text>
+            <View key={checkboxIndex} style={cardPedidosStyles.itemNameContainer}>
+              <Text style={cardPedidosStyles.quantityText}>{pedido.ped_quantidade}</Text>
+              <Text style={cardPedidosStyles.itemName}>{pedido.pro_nome}</Text>
               {exibirCheckbox && (
                 <TouchableOpacity
-                  style={{ marginLeft: 'auto' }}
+                  style={cardPedidosStyles.checkboxContainer}
                   disabled={isFinalizado}
                   onPress={() => handleCheckboxChange(checkboxIndex)}
                 >
                   <View
-                    style={{
-                      width: 20,
-                      height: 20,
-                      borderWidth: 1,
-                      borderColor: 'blue',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: checkboxState[checkboxIndex]
-                        ? 'blue'
-                        : 'transparent',
-                    }}
+                    style={[
+                      cardPedidosStyles.checkbox,
+                      {
+                        backgroundColor: checkboxState[checkboxIndex] ? 'blue' : 'transparent',
+                      },
+                    ]}
                   ></View>
                 </TouchableOpacity>
               )}
             </View>
           ))}
         </View>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <View style={cardPedidosStyles.buttonContainer}>
           {exibirButton && (
             <TouchableOpacity
-              style={{
-                backgroundColor: 'black',
-                width: 80,
-                padding: 10,
-                borderRadius: 5,
-                justifyContent: 'center',
-                alignItems: 'center',
-              }}
+              style={cardPedidosStyles.prontoButton}
               onPress={handleCardPronto}
               disabled={isFinalizado}
             >
-              <Text style={{ color: 'white' }}>{buttonLabel}</Text>
+              <Text style={cardPedidosStyles.prontoButtonText}>{buttonLabel}</Text>
             </TouchableOpacity>
           )}
         </View>

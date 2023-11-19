@@ -7,6 +7,7 @@ import { AntDesign, Ionicons } from '@expo/vector-icons';
 import { Picker } from '@react-native-picker/picker';
 import HeaderEmpresa from '../components/HeaderEmpresa';
 import { useNavigation } from '@react-navigation/native';
+import cadastrarColaboradorStyles from './css/cadastrarColaboradorStyles';
 
 interface Cargo {
   fun_id: number;
@@ -21,7 +22,6 @@ interface Colaborador {
   fun_id: number;
   col_confirma_senha: string;
 }
-
 
 function CadastrarColaborador() {
   const [showNotification, setNotification] = useState(false);
@@ -71,62 +71,34 @@ function CadastrarColaborador() {
   }
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'gray', alignItems: 'center' }}>
-      <ScrollView contentContainerStyle={{ padding: 20 }}>
-        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
-        <Text style={{ fontSize: 30, marginBottom: 10 }}>Cadastrar colaborador</Text>
-        <Text style={{ fontSize: 20, marginBottom: 10, textAlign: 'center' }}>
+    <View style={cadastrarColaboradorStyles.container}>
+      <ScrollView contentContainerStyle={cadastrarColaboradorStyles.contentContainer}>
+        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
+        <Text style={cadastrarColaboradorStyles.pageTitle}>Cadastrar colaborador</Text>
+        <Text style={cadastrarColaboradorStyles.pageSubtitle}>
           Para realizar o cadastro de um colaborador, preencha as informações abaixo.
         </Text>
         <TextInput
-          style={{
-            borderWidth: 1,
-            borderColor: 'black',
-            backgroundColor: 'white',
-            fontSize: 16,
-            padding: 10,
-            marginBottom: 10,
-          }}
+          style={cadastrarColaboradorStyles.input}
           placeholder="Nome completo"
           value={colaborador.col_nome}
           onChangeText={(text) => setColaborador({ ...colaborador, col_nome: text })}
         />
         <TextInput
-          style={{
-            borderWidth: 1,
-            borderColor: 'black',
-            backgroundColor: 'white',
-            fontSize: 16,
-            padding: 10,
-            marginBottom: 10,
-          }}
+          style={cadastrarColaboradorStyles.input}
           placeholder="E-mail"
           value={colaborador.col_email}
           onChangeText={(text) => setColaborador({ ...colaborador, col_email: text })}
         />
         <TextInput
-          style={{
-            borderWidth: 1,
-            borderColor: 'black',
-            backgroundColor: 'white',
-            fontSize: 16,
-            padding: 10,
-            marginBottom: 10,
-          }}
+          style={cadastrarColaboradorStyles.input}
           placeholder="Senha"
           secureTextEntry
           value={colaborador.col_senha}
           onChangeText={(text) => setColaborador({ ...colaborador, col_senha: text })}
         />
         <TextInput
-          style={{
-            borderWidth: 1,
-            borderColor: 'black',
-            backgroundColor: 'white',
-            fontSize: 16,
-            padding: 10,
-            marginBottom: 10,
-          }}
+          style={cadastrarColaboradorStyles.input}
           placeholder="Confirmar senha"
           secureTextEntry
           value={colaborador.col_confirma_senha}
@@ -134,8 +106,10 @@ function CadastrarColaborador() {
         />
         <Text style={{ fontSize: 20, color: 'white' }}>Escolha um cargo:</Text>
         <Picker
-          style={{ color: 'white' }}
+          style={cadastrarColaboradorStyles.picker}
           selectedValue={colaborador.fun_id}
+          dropdownIconColor='white'
+          dropdownIconRippleColor='white'
           onValueChange={(itemValue: any, itemIndex: any) => setColaborador({ ...colaborador, fun_id: itemValue })}
         >
           <Picker.Item label="Selecione" value={0} style={{ color: 'black' }} />
@@ -153,14 +127,9 @@ function CadastrarColaborador() {
 
         <TouchableOpacity
           onPress={() => { setNotification(true) }}
-          style={{
-            marginTop: 20,
-            backgroundColor: 'white',
-            borderRadius: 20,
-            padding: 10,
-          }}
+          style={cadastrarColaboradorStyles.buttonContainer}
         >
-          <Text style={{ color: 'black', fontSize: 20, textAlign: 'center' }}>
+          <Text style={cadastrarColaboradorStyles.buttonText}>
             Cadastrar
           </Text>
         </TouchableOpacity>

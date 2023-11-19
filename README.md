@@ -1,12 +1,12 @@
-# Cardapio Digital (Company App) 🍔
+# Cardápio Digital (Company App) 🍔
 
-This is our TCC for Fatec Guaratinguetá.
-<br>
-Also This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-expo-app`](https://docs.expo.dev/get-started/installation/).
+Welcome to our TCC for Fatec Guaratinguetá.
 
-## 🚀 Tecnologias
+This project is a [Next.js](https://nextjs.org/) application, initiated with [`create-expo-app`](https://docs.expo.dev/get-started/installation/).
 
-Technologies that we used.
+## 🚀 Technologies
+
+We utilized the following technologies:
 
 - React Native
 - Next
@@ -15,37 +15,32 @@ Technologies that we used.
 
 ## 🔖 How to Run?
 
-#### Make a clone
+### Clone the Repository
+
 ```sh
-    git clone git@github.com:Ueverson/campany-app.git
-    cd company-app
-    And thats it!
+git clone git@github.com:Ueverson/company-app.git
+cd company-app
 ```
 
 ## Getting Started
 
-First, install the dependencies:
+Begin by installing the dependencies:
 
 ```bash
 npm install
 # or
 yarn install
 ```
-Also, it's highly recommended that you install React Native and Expo, for this run:
+
+Next, run the development server:
 
 ```bash
-npx expo install react-native-web@~0.19.6 react-dom@18.2.0 @expo/webpack-config@^19.0.0
+npx expo start
+# or for web
+npx expo start --web
 ```
 
-Then, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:19006/](http://localhost:19006/) with your browser to see the result.
+If you're on an Android system, please download the Expo Go app from the Play Store. For iOS users, simply scan the QR Code with your camera app.
 
 You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
 

@@ -2,59 +2,54 @@ import React from 'react';
 import { View, TextInput, ScrollView } from 'react-native';
 import IconFuncionalidade from '../components/IconFuncionalidade';
 import HeaderEmpresa from '../components/HeaderEmpresa';
-import {AntDesign, Feather ,MaterialIcons, FontAwesome, Ionicons} from '@expo/vector-icons';
+import { AntDesign, Feather, MaterialIcons, FontAwesome, Ionicons } from '@expo/vector-icons';
+import homeStyles from './css/homeStyles';
 
 function Home() {
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: 'gray'}}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="login" />
-      <View style={{ margin: 20 }}>
-        <View style={{ paddingBottom: 10 }}>
+    <ScrollView style={homeStyles.container}>
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="login" />
+      <View style={homeStyles.contentContainer}>
+        <View style={homeStyles.searchBar}>
           <TextInput
             placeholder="Pesquisar"
-            style={{
-              backgroundColor: '#fff',
-              borderRadius: 8,
-              paddingLeft: 8,
-              paddingVertical: 12,
-              fontSize: 16,
-            }}
+            style={homeStyles.input}
           />
         </View>
-        <View style={{ flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
+        <View style={homeStyles.iconContainer}>
           <IconFuncionalidade
             redirect="cadastrar-colaborador"
-            icon={<AntDesign name="addusergroup" size={40} color="black" />}
+            icon={<AntDesign name="addusergroup" size={40} color="#c2410c" />}
             alternativeText="Cadastrar colaborador"
           />
           <IconFuncionalidade
             redirect="cadastrar-cargos"
-            icon={<Ionicons name="add" size={40} color="black" />}
+            icon={<Ionicons name="add" size={40} color="#c2410c" />}
             alternativeText="Cadastrar cargo"
           />
           <IconFuncionalidade
             redirect="cargos"
-            icon={<FontAwesome name="address-card" size={40} color="black" />}
+            icon={<FontAwesome name="address-card" size={40} color="#c2410c" />}
             alternativeText="Cargos"
           />
           <IconFuncionalidade
             redirect="qrcode"
-            icon={<AntDesign name="qrcode" size={40} color="black" />}
+            icon={<AntDesign name="qrcode" size={40} color="#c2410c" />}
             alternativeText="QRCode"
           />
           <IconFuncionalidade
             redirect="pedidos-cozinha"
-            icon={<Feather name="list" size={40} color="black" />}
+            icon={<Feather name="list" size={40} color="#c2410c" />}
             alternativeText="Pedidos Cozinha"
           />
           <IconFuncionalidade
             redirect="pedidos-garcom"
-            icon={<Feather name="list" size={40} color="black" />}
+            icon={<Feather name="list" size={40} color="#c2410c" />}
             alternativeText="Pedidos Garçom"
           />
           <IconFuncionalidade
             redirect="compras"
-            icon={<MaterialIcons name="payment" size={40} color="black" />}
+            icon={<MaterialIcons name="payment" size={40} color="#c2410c" />}
             alternativeText="Compras"
           />
         </View>

@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Button } from 'react-native';
+import { View, Text, TouchableOpacity} from 'react-native';
 import Modal from 'react-native-modal';
 import { AntDesign } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import notificationStyles from '../components/css/notificationStyles';
 
-interface NotifyContent {
+interface NotificationProps {
   directTo?: () => void;
   icon?: JSX.Element;
   closePopUp?: () => void;
@@ -12,10 +12,10 @@ interface NotifyContent {
   description?: string;
   title?: string;
   buttonAction?: () => void;
-  isModalVisible: boolean;
+  isModalVisible?: boolean;
 }
 
-function Notification({
+const Notification: React.FC<NotificationProps> = ({
   directTo,
   icon,
   buttonText,
@@ -23,38 +23,22 @@ function Notification({
   title,
   buttonAction,
   isModalVisible,
-}: NotifyContent) {
-
+}: NotificationProps) => {
   return (
     <Modal isVisible={isModalVisible}>
-      <View
-        style={{
-          flex: 1,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: 'white'
-        }}
-      >
-        <TouchableOpacity onPress={directTo}>
-          <AntDesign name="leftcircleo" size={40} color={'black'} />
+      <View style={notificationStyles.container}>
+        <TouchableOpacity onPress={directTo} style={notificationStyles.closeButton}>
+          <AntDesign name="leftcircleo" size={40} color={'white'} />
         </TouchableOpacity>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', margin: 4 }}>
-          {icon}
-        </Text>
-        <Text style={{ fontSize: 24, fontWeight: 'bold' }}>
-          {title}
-        </Text>
-        <Text style={{ fontSize: 24, fontWeight: 'bold', paddingTop: 16 }}>
-          {description}
-        </Text>
-        <Button
-          onPress={buttonAction}
-          title={buttonText || 'OK'}
-          color="black"
-        />
+        <Text style={notificationStyles.icon}>{icon}</Text>
+        <Text style={notificationStyles.title}>{title}</Text>
+        <Text style={notificationStyles.description}>{description}</Text>
+        <TouchableOpacity style={notificationStyles.button} onPress={buttonAction}>
+          <Text style={notificationStyles.buttonText}>{buttonText || 'OK'}</Text>
+        </TouchableOpacity>
       </View>
     </Modal>
   );
-}
+};
 
 export default Notification;

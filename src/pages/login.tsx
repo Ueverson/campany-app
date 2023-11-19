@@ -4,6 +4,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AntDesign } from '@expo/vector-icons';
+import styles from './css/loginStyles';
+import Notification from '../components/Notification'
 
 interface LoginData {
   col_email: string;
@@ -15,6 +17,7 @@ interface LoginResponse {
 }
 
 function Login({ navigation }: any): JSX.Element {
+  const [isErrorVisible, setIsErrorVisible] = useState(false);
   const [loginData, setLoginData] = useState<LoginData>({
     col_email: '',
     col_senha: '',
@@ -59,55 +62,43 @@ function Login({ navigation }: any): JSX.Element {
 
     } catch (error) {
       console.error('Usuário ou senha inválidos');
+      setIsErrorVisible(true);
     }
+  }
+
+  const handleNotificationClose = () => {
+    setIsErrorVisible(false);
   };
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'gray', alignItems: 'center', justifyContent: 'center' }}>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="login" />
-      <Text className="text-3xl mb-4">Login</Text>
-      <Text className="pb-4 text-black-500">Preencha as informações para logar no sistema.</Text>
+    <View style={styles.container}>
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} style={styles.headerIcon} />} to="login" />
+      <Text style={styles.welcomeText}>Bem vindo!</Text>
+      <Text style={styles.pageTitle}>Login</Text>
+      <Text style={styles.pageSubtitle}>Preencha as informações para logar no sistema.</Text>
       <TextInput
-        style={{
-          borderWidth: 1,
-          borderColor: 'black',
-          backgroundColor: 'white',
-          fontSize: 16,
-          padding: 10,
-          marginBottom: 10,
-          width: 300,
-          height: 40,
-        }}
+        style={styles.input}
         placeholder="E-mail"
         onChangeText={(text) => handleInputChange('col_email', text)}
         value={loginData.col_email}
       />
       <TextInput
-        style={{
-          borderWidth: 1,
-          borderColor: 'black',
-          backgroundColor: 'white',
-          fontSize: 16,
-          padding: 10,
-          marginBottom: 10,
-          width: 300,
-          height: 40,
-        }}
+        style={styles.input}
         placeholder="Senha"
         secureTextEntry
         onChangeText={(text) => handleInputChange('col_senha', text)}
         value={loginData.col_senha}
       />
-      <TouchableOpacity
-        style={{
-          marginTop: 10,
-          backgroundColor: 'white',
-          borderRadius: 20,
-          padding: 10,
-        }}
-        onPress={handleSubmit}>
-        <Text style={{ color: 'black', fontSize: 20, textAlign: 'center' }}>Login</Text>
+      <TouchableOpacity style={styles.loginButton} onPress={handleSubmit}>
+        <Text style={styles.loginButtonText}>Entrar</Text>
       </TouchableOpacity>
+      <Notification
+        title="Erro de autenticação"
+        description="Usuário ou senha inválidos"
+        buttonText="OK"
+        isModalVisible={isErrorVisible}
+        buttonAction={handleNotificationClose}
+      />
     </View>
   );
 }

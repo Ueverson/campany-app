@@ -4,7 +4,7 @@ import HeaderEmpresa from '../components/HeaderEmpresa';
 import { AtualizarStatusPedidos, buscarPedidos } from '../service/PedidoService';
 import { AntDesign } from '@expo/vector-icons';
 import CardPedidosGarcom from '../components/cardPedidosGarcom';
-
+import pedidosGarcomStyles from './css/pedidosGarcomStyles';
 
 interface Pedido {
   ped_id: number;
@@ -21,18 +21,15 @@ function PedidosGarcom() {
 
   useEffect(() => {
     async function fetchPedidosProntos() {
-      await buscarPedidos("P").then((data: Pedido[]) => {
-        const grouped: { [key: number]: Pedido[] } = data.reduce(
-          (result, item) => {
-            const mesid = item.mes_id;
-            if (!result[mesid]) {
-              result[mesid] = [];
-            }
-            result[mesid].push(item);
-            return result;
-          },
-          {} as { [key: number]: Pedido[] }
-        );
+      await buscarPedidos('P').then((data: Pedido[]) => {
+        const grouped: { [key: number]: Pedido[] } = data.reduce((result, item) => {
+          const mesid = item.mes_id;
+          if (!result[mesid]) {
+            result[mesid] = [];
+          }
+          result[mesid].push(item);
+          return result;
+        }, {} as { [key: number]: Pedido[] });
         setPedidosProntos(Object.values(grouped));
       });
     }
@@ -51,9 +48,9 @@ function PedidosGarcom() {
 
   if (!pedidosProntos || pedidosProntos.length === 0) {
     return (
-      <View style={{ backgroundColor: 'gray'} } className='h-full min-h-screen'>
-        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
-        <Text style={{ color: 'black', fontSize: 20, textAlign: 'center' }}>
+      <View style={pedidosGarcomStyles.container}>
+        <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
+        <Text style={[pedidosGarcomStyles.textWhite, { fontSize: 20, textAlign: 'center' }]}>
           Nenhum pedido finalizado encontrado.
         </Text>
       </View>
@@ -61,15 +58,13 @@ function PedidosGarcom() {
   }
 
   return (
-    <View style={{ backgroundColor: 'gray'} } className='h-full min-h-screen'>
-      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="black" />} to="home" />
-      <Text style={{ fontSize: 30, fontWeight: 'bold', color: 'white' }}>
-        Finalizados
-      </Text>
+    <View style={pedidosGarcomStyles.container}>
+      <HeaderEmpresa icon={<AntDesign name="leftcircleo" size={40} color="white" />} to="home" />
+      <Text style={[pedidosGarcomStyles.pageTitle, { paddingBottom: 10 }]}>Finalizados</Text>
       <ScrollView>
         {pedidosProntos.map((pedido, index) => (
           <CardPedidosGarcom
-          key={pedido[0].ped_id}
+            key={pedido[0].ped_id}
             idMesa={pedido[0].mes_id}
             pedidos={pedido}
             index={index}

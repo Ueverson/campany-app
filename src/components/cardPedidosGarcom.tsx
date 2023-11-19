@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
+import cardPedidosGarcomStyles from './css/cardPedidosGarcomStyles';
 
 interface Pedido {
   ped_id: number;
@@ -50,95 +51,44 @@ const CardPedidosGarcom: React.FC<CardPedidosGarcomProps> = ({
   };
 
   return (
-    <View
-      style={{
-        maxWidth: 300,
-        marginVertical: 10,
-        backgroundColor: '#FFA500',
-        borderRadius: 10,
-        overflow: 'hidden',
-        shadowColor: 'black',
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.3,
-        shadowRadius: 4,
-        elevation: 4,
-      }}
-    >
-      <View style={{ padding: 10 }}>
-        <View
-          style={{
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-          }}
-        >
-          <Text style={{ fontSize: 20, fontWeight: 'bold' }}>Mesa {idMesa}</Text>
+    <View style={cardPedidosGarcomStyles.container}>
+      <View style={cardPedidosGarcomStyles.cardContent}>
+        <View style={cardPedidosGarcomStyles.header}>
+          <Text style={cardPedidosGarcomStyles.mesaText}>Mesa {idMesa}</Text>
         </View>
-        <View style={{ marginVertical: 10 }}>
+        <View style={cardPedidosGarcomStyles.itemContainer}>
           {pedidos.map((pedido, checkboxIndex) => (
-            <View
-              key={checkboxIndex}
-              style={{
-                flexDirection: 'row',
-                alignItems: 'center',
-                marginBottom: 5,
-              }}
-            >
-              <Text
-                style={{
-                  backgroundColor: 'white',
-                  borderRadius: 5,
-                  padding: 5,
-                }}
-              >
-                {pedido.ped_quantidade}
-              </Text>
-              <Text style={{ marginLeft: 10, fontWeight: 'bold', color: 'gray' }}>
-                {pedido.pro_nome}
-              </Text>
+            <View key={checkboxIndex} style={cardPedidosGarcomStyles.itemNameContainer}>
+              <Text style={cardPedidosGarcomStyles.quantityText}>{pedido.ped_quantidade}</Text>
+              <Text style={cardPedidosGarcomStyles.itemName}>{pedido.pro_nome}</Text>
               {exibirCheckbox && (
                 <TouchableOpacity
-                  style={{ marginLeft: 'auto' }}
+                  style={cardPedidosGarcomStyles.checkboxContainer}
                   disabled={isFinalizado}
                   onPress={() => handleCheckboxChange(checkboxIndex)}
                 >
                   <View
-                    style={{
-                      width: 20,
-                      height: 20,
-                      borderWidth: 1,
-                      borderColor: 'blue',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      backgroundColor: checkboxState[checkboxIndex]
-                        ? 'blue'
-                        : 'transparent',
-                    }}
+                    style={[
+                      cardPedidosGarcomStyles.checkbox,
+                      {
+                        backgroundColor: checkboxState[checkboxIndex] ? 'blue' : 'transparent',
+                      },
+                    ]}
                   ></View>
                 </TouchableOpacity>
               )}
             </View>
           ))}
         </View>
-        <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <View style={cardPedidosGarcomStyles.buttonContainer}>
           {exibirButton && (
             <>
               <TouchableOpacity
-                style={{
-                  marginLeft: 10,
-                  backgroundColor: 'black',
-                  width: 80,
-                  padding: 10,
-                  borderRadius: 5,
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                }}
+                style={cardPedidosGarcomStyles.entregueButton}
                 onPress={handleEntregue}
                 disabled={isFinalizado}
               >
-                <Text style={{ color: 'white' }}>Entregue</Text>
+                <Text style={cardPedidosGarcomStyles.entregueButtonText}>Entregue</Text>
               </TouchableOpacity>
             </>
           )}
