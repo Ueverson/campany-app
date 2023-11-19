@@ -119,7 +119,7 @@ function Pedidos() {
                 index={index}
                 buttonLabel="Entregar"
                 isFinalizado={false}
-                exibirButton={true}
+                exibirButton={false}
                 exibirCheckbox={false}
               />
             ))}

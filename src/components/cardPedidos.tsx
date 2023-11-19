@@ -9,7 +9,7 @@ interface Pedido {
   ped_status: string;
   ped_quantidade: number;
   pro_nome: string;
-  mes_id: number; // Adicionei o campo mes_id, que parece ser necessário
+  mes_id: number;
 }
 
 interface CardPedidosProps {
