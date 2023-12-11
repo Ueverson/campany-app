@@ -108,7 +108,7 @@ const CardPedidos: React.FC<CardPedidosProps> = ({
 
       <Notification
         isModalVisible={isNotificationVisible}
-        icon={<AntDesign name="info" size={40} color={'white'} />}
+        icon={<Feather name="alert-circle" size={40} color={'white'} />}
         title="Observações"
         product={
           [
