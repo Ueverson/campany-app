@@ -36,6 +36,7 @@ const cardPedidosStyles = StyleSheet.create({
     padding: 5,
     fontSize: 16,
     marginRight: 10,
+    marginTop:10,
   },
   itemNameContainer: {
     flexDirection: 'row',
@@ -72,6 +73,23 @@ const cardPedidosStyles = StyleSheet.create({
   prontoButtonText: {
     color: 'white',
   },
+  observacoesContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  observacoesText: {
+    marginTop: 15,
+    marginBottom: 20,
+    fontSize: 20,
+    color: 'black',
+    fontWeight: 'bold',
+    textDecorationLine: 'underline',
+    marginLeft: 10,
+  },
+  observacoesIcon: {
+    marginRight: 2,
+  }
 });
 
 export default cardPedidosStyles;
