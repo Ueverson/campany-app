@@ -40,6 +40,23 @@ const notificationStyles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
   },
+  productContainer: {
+    marginBottom: 20,
+    borderWidth: 1,
+    borderColor: 'gray',
+    padding: 10,
+    borderRadius: 8,
+  },
+  productName: {
+    color: 'orange',
+    fontWeight: 'bold',
+    fontSize: 20,
+    marginBottom: 5,
+  },
+  obsText: {
+    color: 'white',
+    fontSize: 16,
+  },
 });
 
 export default notificationStyles;

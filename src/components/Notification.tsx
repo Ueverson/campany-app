@@ -10,6 +10,10 @@ interface NotificationProps {
   closePopUp?: () => void;
   buttonText?: string;
   description?: string;
+  product?: {
+    item?: string | string[],
+    obs?: string | string[],
+  }[],
   title?: string;
   buttonAction?: () => void;
   isModalVisible?: boolean;
@@ -21,6 +25,7 @@ const Notification: React.FC<NotificationProps> = ({
   buttonText,
   description,
   title,
+  product,
   buttonAction,
   isModalVisible,
 }: NotificationProps) => {
@@ -33,6 +38,14 @@ const Notification: React.FC<NotificationProps> = ({
         <Text style={notificationStyles.icon}>{icon}</Text>
         <Text style={notificationStyles.title}>{title}</Text>
         <Text style={notificationStyles.description}>{description}</Text>
+        <View>
+          {product?.map((item, index) => (
+            <View style={notificationStyles.productContainer} key={index}>
+              <Text style={notificationStyles.productName}>{item.item}</Text>
+              <Text style={notificationStyles.obsText}>Obs: {item.obs}</Text>
+            </View>
+          ))}
+        </View>
         <TouchableOpacity style={notificationStyles.button} onPress={buttonAction}>
           <Text style={notificationStyles.buttonText}>{buttonText || 'OK'}</Text>
         </TouchableOpacity>
@@ -40,5 +53,6 @@ const Notification: React.FC<NotificationProps> = ({
     </Modal>
   );
 };
+
 
 export default Notification;

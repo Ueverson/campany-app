@@ -6,6 +6,7 @@ interface Pedido {
   ped_quantidade: number;
   pro_nome: string;
   mes_id: number;
+  ped_observacao: string;
 }
 
 export async function buscarPedidos(status: string): Promise<Pedido[]> {
