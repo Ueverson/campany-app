@@ -12,6 +12,7 @@ interface Pedido {
   ped_quantidade: number;
   pro_nome: string;
   mes_id: number;
+  ped_observacao: string
 }
 
 interface CardPedidosProps {
@@ -110,18 +111,10 @@ const CardPedidos: React.FC<CardPedidosProps> = ({
         isModalVisible={isNotificationVisible}
         icon={<Feather name="alert-circle" size={40} color={'white'} />}
         title="Observações"
-        product={
-          [
-            {
-              item: "Ipiranga 100g",
-              obs: "Retirar alface"
-            },
-            {
-              item: "Xisbeicon B.B.Q",
-              obs: "Retirar maionese"
-            }
-          ]
-        }
+        product={pedidos.map((pedido) => ({
+          item: pedido.pro_nome,
+          obs: pedido.ped_observacao
+        }))}
         buttonText="OK"
         buttonAction={() => setNotificationVisible(false)}
       />

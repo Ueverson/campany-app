@@ -59,7 +59,7 @@ export default function Qrcode() {
   const handleChange = (value: string) => {
     setCliente((prevFormulario) => ({
       ...prevFormulario,
-      mesa_id: parseInt(value),
+      mes_id: parseInt(value),
     }));
   };
 

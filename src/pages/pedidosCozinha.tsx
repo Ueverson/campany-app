@@ -14,6 +14,7 @@ interface Pedido {
   ped_quantidade: number;
   pro_nome: string;
   mes_id: number;
+  ped_observacao: string;
 }
 
 function Pedidos() {
