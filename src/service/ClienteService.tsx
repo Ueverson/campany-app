@@ -1,6 +1,6 @@
 
   export async function criarCliente(mesId: number){
-    const url = "https://cardapio-digital-api.onrender.com/cliente";
+    const url = "https://api-lcvn.onrender.com/cliente";
   
     try {
       const response = await fetch(url, {

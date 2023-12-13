@@ -53,7 +53,7 @@ function Login({ navigation }: any): JSX.Element {
   const handleSubmit = async (): Promise<void> => {
     try {
       const response = await axios.post<LoginResponse>(
-        'https://cardapio-digital-api.onrender.com/colaborador/autenticar/',
+        'https://api-lcvn.onrender.com/colaborador/autenticar/',
         loginData
       );
       const { webToken } = response.data;

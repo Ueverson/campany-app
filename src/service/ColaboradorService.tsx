@@ -7,7 +7,7 @@ interface Colaborador {
 }
 
 export async function cadastrarColaborador(colaborador: Colaborador): Promise<boolean> {
-  const url = 'https://cardapio-digital-api.onrender.com/colaborador';
+  const url = 'https://api-lcvn.onrender.com/colaborador';
 
   let retorno: boolean = false;
 
